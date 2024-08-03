@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Idea Platform Test Task"
 include(":app")
- 
+include(":data:products")
+include(":core:ui:theme")
+include(":feature:products")

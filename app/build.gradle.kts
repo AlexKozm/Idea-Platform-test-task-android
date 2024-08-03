@@ -85,7 +85,7 @@ dependencies {
 
     implementation(libs.androidx.paging.runtime)
     // alternatively - without Android dependencies for tests
-    androidTestImplementation("androidx.paging:paging-testing-android:3.3.1")
+    androidTestImplementation(libs.androidx.paging.testing.android)
 //    androidTestImplementation("org.junit.jupiter:junit-jupiter-api:5.10.1")
 
 //    testImplementation(libs.androidx.paging.common)
@@ -96,7 +96,10 @@ dependencies {
 
 
 
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
+    implementation(libs.kotlinx.datetime)
 
+    implementation(project(":data:products"))
+    implementation(project(":core:ui:theme"))
+    implementation(project(":feature:products"))
 
 }
