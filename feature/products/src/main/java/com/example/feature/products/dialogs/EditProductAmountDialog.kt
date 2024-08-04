@@ -58,7 +58,7 @@ internal fun EditProductAmountDialog(
                     }
                 ) {
                     Icon(
-                        painter = painterResource(id = R.drawable.outline_add_circle),
+                        painter = painterResource(id = R.drawable.baseline_remove_circle),
                         contentDescription = "",
                         tint = DialogContentColor
                     )
