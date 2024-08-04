@@ -17,6 +17,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -28,21 +29,15 @@ import com.example.feature.products.ProductsListScreen
 import com.example.feature.products.ProductsListViewModel
 import com.example.theme.MyApplicationTheme
 import com.example.theme.SystemUIColor
+import org.koin.androidx.compose.koinViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val db = Room.databaseBuilder(
-            applicationContext,
-            AppDatabase::class.java, "database-name"
-        )
-            .createFromAsset("database/data.db")
-            .build()
-        val vm = ProductsListViewModel(
-            ProductRepo(db)
-        )
+        val vm: ProductsListViewModel by viewModel()
         setContent {
             MyApplicationTheme {
                 SideEffect {
@@ -56,7 +51,7 @@ class MainActivity : ComponentActivity() {
                             title = {
                                 Text(
                                     modifier = Modifier.fillMaxWidth(),
-                                    text = "Список товаров",
+                                    text = stringResource(R.string.list_of_products),
                                     textAlign = TextAlign.Center
                                 )
                             },

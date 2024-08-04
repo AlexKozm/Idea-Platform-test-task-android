@@ -10,8 +10,6 @@ class TagsConverter {
     fun toTags(string: String): Tags =
         if (string == "[]") emptyList()
         else string
-//            .substringAfter("[")
-//            .substringBeforeLast("]")
             .dropWhile { it in "[\"" }
             .dropLastWhile { it in "\"]" }
             .split("\", \"")

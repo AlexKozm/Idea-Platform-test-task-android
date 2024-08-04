@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
 
 class ProductsListViewModel(
-    val productRepo: ProductRepo
+    private val productRepo: ProductRepo
 ): ViewModel() {
     private val _searchFilter = MutableStateFlow("")
     val searchFilter = _searchFilter.asStateFlow()

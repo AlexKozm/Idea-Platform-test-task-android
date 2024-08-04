@@ -7,12 +7,14 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.feature.products.R
 import com.example.theme.DialogBackground
 import com.example.theme.DialogContentColor
 
 @Composable
-fun DeleteProductDialog(
+internal fun DeleteProductDialog(
     onConfirm: () -> Unit,
     onDismiss: () -> Unit
 ) {
@@ -22,15 +24,15 @@ fun DeleteProductDialog(
             Icon(imageVector = Icons.Default.Warning, contentDescription = "Delete warning")
         },
         title = {
-            Text(text = "Удаление товара")
+            Text(text = stringResource(R.string.products_deletion_dialog_title))
         },
         text = {
-            Text(text = "Вы действительно хотите удалить выбранный товар?")
+            Text(text = stringResource(R.string.product_deletion_dialog_text))
         },
         confirmButton = {
             TextButton(onClick = onConfirm) {
                 Text(
-                    text = "Да",
+                    text = stringResource(R.string.yes),
                     color = DialogContentColor
                 )
             }
@@ -38,7 +40,7 @@ fun DeleteProductDialog(
         dismissButton = {
             TextButton(onClick = onDismiss) {
                 Text(
-                    text = "Нет",
+                    text = stringResource(R.string.no),
                     color = DialogContentColor,
                 )
             }

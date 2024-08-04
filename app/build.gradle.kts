@@ -49,6 +49,14 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    applicationVariants.all {
+        val variantName = name
+        sourceSets {
+            getByName("main") {
+                java.srcDir(File("build/generated/ksp/$variantName/kotlin"))
+            }
+        }
+    }
 }
 
 dependencies {
@@ -98,8 +106,24 @@ dependencies {
 
     implementation(libs.kotlinx.datetime)
 
+//    implementation(libs.koin.bom)
+    implementation(libs.koin.core)
+    testImplementation(libs.koin.test)
+    testImplementation(libs.koin.test.junit4)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+//    implementation(libs.koin.annotations)
+    // Koin Annotations KSP Compiler
+//    ksp(libs.koin.ksp.compiler)
+
+
     implementation(project(":data:products"))
     implementation(project(":core:ui:theme"))
     implementation(project(":feature:products"))
-
 }
+
+//ksp {
+//    arg("KOIN_CONFIG_CHECK","true")
+//    arg("KOIN_DEFAULT_MODULE","false")
+//}
+

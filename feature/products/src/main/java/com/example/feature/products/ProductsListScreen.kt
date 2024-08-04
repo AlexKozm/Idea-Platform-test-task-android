@@ -21,6 +21,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.paging.PagingData
@@ -71,7 +72,8 @@ fun ProductsListScreen(
 
     LazyColumn(
         modifier = modifier
-            .background(BackgroundColor),
+            .background(BackgroundColor)
+            .fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         contentPadding = PaddingValues(8.dp)
     ) {
@@ -90,7 +92,7 @@ fun ProductsListScreen(
                     )
                 },
                 label = {
-                    Text(text = "Поиск товаров")
+                    Text(text = stringResource(R.string.product_search))
                 },
                 trailingIcon = {
                     if (inFocus.value && searchText != "") {

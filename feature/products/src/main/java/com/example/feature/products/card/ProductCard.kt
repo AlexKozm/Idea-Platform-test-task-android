@@ -20,19 +20,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.data.products.converters.LocalDateTimeConverter
 import com.example.data.products.data.Product
+import com.example.feature.products.R
 import com.example.theme.CardColor
 import com.example.theme.EditIconColor
 import com.example.theme.TrashIconColor
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun ProductCard(
+internal fun ProductCard(
     modifier: Modifier = Modifier,
     onEditClick: () -> Unit,
     onDeleteClick: () -> Unit,
@@ -53,7 +55,9 @@ fun ProductCard(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                modifier = Modifier.padding(8.dp).weight(1f),
+                modifier = Modifier
+                    .padding(8.dp)
+                    .weight(1f),
                 text = product.name,
                 style = MaterialTheme.typography.titleLarge
                     .copy(fontWeight = FontWeight.SemiBold),
@@ -97,7 +101,7 @@ fun ProductCard(
                 modifier = Modifier.weight(1f)
             ) {
                 Text(
-                    text = "На складе",
+                    text = stringResource(R.string.in_stock),
                     style = MaterialTheme.typography.bodyMedium
                         .copy(fontWeight = FontWeight.Medium)
                 )
@@ -107,7 +111,7 @@ fun ProductCard(
                 modifier = Modifier.weight(1f)
             ) {
                 Text(
-                    text = "Дата добавления",
+                    text = stringResource(R.string.adding_date),
                     style = MaterialTheme.typography.bodyMedium
                         .copy(fontWeight = FontWeight.Medium)
                 )

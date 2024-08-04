@@ -19,6 +19,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.data.products.data.Product
 import com.example.data.products.data.testData
@@ -28,7 +29,7 @@ import com.example.theme.DialogBackground
 import com.example.theme.DialogContentColor
 
 @Composable
-fun EditProductAmountDialog(
+internal fun EditProductAmountDialog(
     onConfirm: (Int) -> Unit,
     onDismiss: () -> Unit,
     productToChange: Product
@@ -42,7 +43,7 @@ fun EditProductAmountDialog(
             Icon(imageVector = Icons.Default.Settings, contentDescription = "Delete warning")
         },
         title = {
-            Text(text = "Количество товара")
+            Text(text = stringResource(R.string.product_edit_amount_dialog_title))
         },
         text = {
             Row(
@@ -83,7 +84,7 @@ fun EditProductAmountDialog(
         confirmButton = {
             TextButton(onClick = { onConfirm(product.amount) }) {
                 Text(
-                    text = "Принять",
+                    text = stringResource(R.string.accept),
                     color = DialogContentColor
                 )
             }
@@ -91,7 +92,7 @@ fun EditProductAmountDialog(
         dismissButton = {
             TextButton(onClick = onDismiss) {
                 Text(
-                    text = "Отмена",
+                    text = stringResource(R.string.cancel),
                     color = DialogContentColor
                 )
             }
